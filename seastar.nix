@@ -42,6 +42,26 @@ pkgs.stdenv.mkDerivation {
     openssl
   ];
 
+  propagatedBuildInputs = with pkgs; [
+    boost
+    c-ares
+    cryptopp
+    fmt
+    gnutls
+    hwloc
+    lz4
+    numactl
+    protobuf
+    lksctp-tools
+    liburing
+    libunistring
+    yaml-cpp
+    systemtap-sdt
+    xfsprogs
+    zlib
+    openssl
+  ];
+
   postPatch = ''
     patchShebangs scripts/
     patchShebangs configure.py
