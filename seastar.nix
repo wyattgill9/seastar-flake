@@ -61,6 +61,7 @@ pkgs.stdenv.mkDerivation {
     zlib
     openssl
     libtasn1
+    libidn2
   ];
 
   postPatch = ''
