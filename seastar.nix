@@ -1,5 +1,8 @@
 {pkgs ? import <nixpkgs> {}}:
-pkgs.stdenv.mkDerivation {
+let
+  toolchain = pkgs.llvmPackages_latest.stdenv;
+in
+toolchain.mkDerivation {
   pname = "seastar";
   version = "unstable-2024-12-15";
 
@@ -74,7 +77,7 @@ pkgs.stdenv.mkDerivation {
     "-DSeastar_INSTALL=ON"
   ];
 
-  env.NIX_CFLAGS_COMPILE = "-std=c++20";
+  env.NIX_CFLAGS_COMPILE = "-std=c++23";
 
   enableParallelBuilding = true;
   doCheck = false;
