@@ -34,7 +34,7 @@ pkgs.stdenv.mkDerivation {
     liburing
     libunistring
     yaml-cpp
-    systemtap-sdt
+    libsystemtap
     xfsprogs
     zlib
     doxygen
@@ -60,6 +60,7 @@ pkgs.stdenv.mkDerivation {
     xfsprogs
     zlib
     openssl
+    libtasn1
   ];
 
   postPatch = ''
