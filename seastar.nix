@@ -4,7 +4,7 @@ let
 in
 toolchain.mkDerivation {
   pname = "seastar";
-  version = "unstable-2026-1-13";
+  version = "unstable-2026-01-13";
 
   src = pkgs.fetchFromGitHub {
     owner = "scylladb";
@@ -37,12 +37,14 @@ toolchain.mkDerivation {
     liburing
     libunistring
     yaml-cpp
-    libsystemtap
+    systemtap
     xfsprogs
     zlib
     doxygen
     valgrind
     openssl
+    libaio
+    libxfs
   ];
 
   propagatedBuildInputs = with pkgs; [
@@ -59,7 +61,7 @@ toolchain.mkDerivation {
     liburing
     libunistring
     yaml-cpp
-    systemtap-sdt
+    systemtap
     xfsprogs
     zlib
     openssl
@@ -75,9 +77,20 @@ toolchain.mkDerivation {
 
   cmakeFlags = [
     "-DSeastar_INSTALL=ON"
+    "-DSeastar_DPDK=OFF"
+    "-DSeastar_CXX_FLAGS=-std=c++23"
   ];
 
-  env.NIX_CFLAGS_COMPILE = "-std=c++23";
+  NIX_LDFLAGS = [
+    "-lpthread"
+    "-lrt"
+    "-ldl"
+  ];
+
+  env.NIX_CFLAGS_COMPILE = toString [
+    "-std=c++23"
+    "-Wno-error"
+  ];
 
   enableParallelBuilding = true;
   doCheck = false;
@@ -87,5 +100,6 @@ toolchain.mkDerivation {
     homepage = "https://seastar.io";
     license = licenses.asl20;
     platforms = platforms.linux;
+    maintainers = [];
   };
 }
