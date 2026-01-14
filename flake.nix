@@ -14,6 +14,11 @@
       seastar = nixpkgs.legacyPackages.x86_64-linux.callPackage ./seastar.nix {};
     };
 
+    packages.aarch64-linux = {
+      default = self.packages.aarch64-linux.seastar;
+      seastar = nixpkgs.legacyPackages.aarch64-linux.callPackage ./seastar.nix {};
+    };
+
     overlays.default = final: prev: {
       seastar =
         if prev.stdenv.isLinux && prev.stdenv.isx86_64
