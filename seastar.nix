@@ -66,6 +66,7 @@ toolchain.mkDerivation {
     libtasn1
     libidn2
     p11-kit
+    toolchain.cc.libc
   ];
 
   postPatch = ''
