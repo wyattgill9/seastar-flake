@@ -61,7 +61,7 @@ toolchain.mkDerivation {
     liburing
     libunistring
     yaml-cpp
-    systemtap
+    libsystemtap
     xfsprogs
     zlib
     openssl
