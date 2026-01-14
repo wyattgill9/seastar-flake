@@ -1,6 +1,6 @@
 {pkgs ? import <nixpkgs> {}}:
 let
-  toolchain = pkgs.llvmPackages_latest.stdenv;
+  toolchain = pkgs.llvmPackages_20.stdenv;
 in
 toolchain.mkDerivation {
   pname = "seastar";
