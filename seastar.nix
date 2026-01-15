@@ -4,13 +4,13 @@ let
 in
 toolchain.mkDerivation {
   pname = "seastar";
-  version = "seastar-25.05.0";
+  version = "25.05.0";
 
   src = pkgs.fetchFromGitHub {
     owner = "scylladb";
     repo = "seastar";
-    rev = "seastar-25.05.0";
-    hash = "sha256-d8n+razhGQZ9YV37Fp0RzKC0DHdwnohe87PgVSkymGA=";
+    rev = "a032d53884da67e4c89715d90ec222a9d7d90db6";
+    hash = "sha256-m7BPvy7htYNp7Wn+u4YnwA33yDN/e5JeliwTDbLRN8U=";
   };
 
   nativeBuildInputs = with pkgs; [
