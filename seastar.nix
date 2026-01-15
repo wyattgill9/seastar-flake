@@ -4,13 +4,13 @@ let
 in
 toolchain.mkDerivation {
   pname = "seastar";
-  version = "unstable-2026-01-13";
+  version = "seastar-25.05.0";
 
   src = pkgs.fetchFromGitHub {
     owner = "scylladb";
     repo = "seastar";
-    rev = "HEAD";
-    hash = "sha256-VU2ez4flMDtMvTVouPto9oFuGKN83E4fWkwjWZGC39c=";
+    rev = "seastar-25.05.0";
+    hash = "sha256-d8n+razhGQZ9YV37Fp0RzKC0DHdwnohe87PgVSkymGA=";
   };
 
   nativeBuildInputs = with pkgs; [
@@ -79,12 +79,6 @@ toolchain.mkDerivation {
     "-DSeastar_INSTALL=ON"
     "-DSeastar_DPDK=OFF"
     "-DSeastar_CXX_FLAGS=-std=c++23"
-  ];
-
-  NIX_LDFLAGS = [
-    "-lpthread"
-    "-lrt"
-    "-ldl"
   ];
 
   env.NIX_CFLAGS_COMPILE = toString [
